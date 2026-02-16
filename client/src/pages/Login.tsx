@@ -4,6 +4,14 @@ import { useState } from "react"
 const Login = () => {
 
   const [state, setState] = useState('sign up')
+  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
+  const [isSubmitting, seIsSubmitting] = useState(false)
+
+  const navigate =
+
   return (
     <>
     <main className="login-page-container">
