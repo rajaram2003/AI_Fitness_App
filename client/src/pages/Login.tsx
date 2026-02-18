@@ -54,7 +54,7 @@ const Login = () => {
             <div className="relative mt-2">
               <MailIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 size-4.5"/>
               <input onChange={(e)=>setEmail(e.target.value)} value={email} 
-              type="text" placeholder="Choose a username" className="login-input" required/>
+              type="email" placeholder="Enter your email" className="login-input" required/>
             </div>
           </div>
 
