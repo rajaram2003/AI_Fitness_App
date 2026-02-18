@@ -1,4 +1,4 @@
-import { AtSignIcon } from "lucide-react"
+import { AtSignIcon, MailIcon } from "lucide-react"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useAppContext } from "../context/AppContext"
@@ -47,14 +47,17 @@ const Login = () => {
           </div>
         )}
 
+        {/* Email */}
+
         <div className="mt-4">
-            <label className="font-medium text-sm text-gray-700 dark:text-gray-300">Username</label>
+            <label className="font-medium text-sm text-gray-700 dark:text-gray-300">Email</label>
             <div className="relative mt-2">
-              <AtSignIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 size-4.5"/>
+              <MailIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 size-4.5"/>
               <input onChange={(e)=>setUsername(e.target.validationMessage)} value={username} 
               type="text" placeholder="Choose a username" className="login-input" required/>
             </div>
           </div>
+
       </form>
     </main>
     </>
