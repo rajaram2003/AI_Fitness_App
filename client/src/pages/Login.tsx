@@ -16,7 +16,9 @@ const Login = () => {
   const {login, signup, user} = useAppContext()
 
   useEffect(()=>{
-    if(user)
+    if(user){
+      navigate('/')
+    }
   },[user, navigate])
 
   return (
@@ -39,7 +41,8 @@ const Login = () => {
             <label className="font-medium text-sm text-gray-700 dark:text-gray-300">Username</label>
             <div className="relative mt-2">
               <AtSignIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 size-4.5"/>
-              <input type="text" placeholder="Choose a username" className="login-input" required/>
+              <input onChange={(e)=>setUsername(e.target.validationMessage)} value={username} 
+              type="text" placeholder="Choose a username" className="login-input" required/>
             </div>
           </div>
         )}
