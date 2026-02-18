@@ -1,5 +1,5 @@
 import { AtSignIcon } from "lucide-react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useAppContext } from "../context/AppContext"
 
@@ -14,6 +14,10 @@ const Login = () => {
 
   const navigate = useNavigate()
   const {login, signup, user} = useAppContext()
+
+  useEffect(()=>{
+    if(user)
+  },[user, navigate])
 
   return (
     <>
