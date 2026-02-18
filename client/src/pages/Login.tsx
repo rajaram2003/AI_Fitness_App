@@ -1,5 +1,6 @@
 import { AtSignIcon } from "lucide-react"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 const Login = () => {
 
@@ -10,7 +11,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false)
   const [isSubmitting, seIsSubmitting] = useState(false)
 
-  const navigate =
+  const navigate = useNavigate()
 
   return (
     <>
