@@ -60,7 +60,6 @@ const Login = () => {
 
       </form>
     </main>
-    
     </>
   )
 }
