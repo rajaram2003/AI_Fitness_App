@@ -1,4 +1,4 @@
-import { AtSignIcon, MailIcon } from "lucide-react"
+import { AtSignIcon, LockIcon, MailIcon } from "lucide-react"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useAppContext } from "../context/AppContext"
@@ -53,6 +53,17 @@ const Login = () => {
             <label className="font-medium text-sm text-gray-700 dark:text-gray-300">Email</label>
             <div className="relative mt-2">
               <MailIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 size-4.5"/>
+              <input onChange={(e)=>setEmail(e.target.value)} value={email} 
+              type="email" placeholder="Enter your email" className="login-input" required/>
+            </div>
+          </div>
+
+          {/* Password */}
+
+          <div className="mt-4">
+            <label className="font-medium text-sm text-gray-700 dark:text-gray-300">Password</label>
+            <div className="relative mt-2">
+              <LockIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 size-4.5"/>
               <input onChange={(e)=>setEmail(e.target.value)} value={email} 
               type="email" placeholder="Enter your email" className="login-input" required/>
             </div>
