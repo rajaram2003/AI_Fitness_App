@@ -70,7 +70,8 @@ const Login = () => {
               placeholder="Enter your password" 
               className="login-input pr-10" required
               type={showPassword ? 'text' : 'password'}/>
-              <button type="button" className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+              <button type="button" className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+              onChange={()=> setShowPassword((p)=> !p)}>
                 {showPassword ? <EyeOffIcon size={16}/> : <EyeIcon size={16}/>}
               </button>
             </div>
