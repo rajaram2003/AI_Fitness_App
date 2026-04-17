@@ -1,4 +1,4 @@
-import { PersonStanding } from "lucide-react"
+import { PersonStanding, User } from "lucide-react"
 import { useState } from "react"
 import { Toaster } from "react-hot-toast"
 import { useAppContext } from "../context/AppContext"
@@ -45,7 +45,24 @@ const Onboarding = () => {
             <div key={s} className={`h-1.5 flex-1 rounded-full transition-all duration-300 ${s <= step ? "bg-emerald-500" : "bg-slate-200 dark:bg-slate-800"}`}/>
           ))}
         </div>
-        <p>Step {step} of {totalSteps}</p>
+        <p className="text-sm text-slate-400 mt-3">Step {step} of {totalSteps}</p>
+      </div>
+
+      {/* Form Content */}
+
+      <div className="flex-1 px-6 onboarding-wrapper">
+        {step === 1 && (
+          <div className="space-y-6">
+            <div>
+              <div><User className="size-6 text-emerald-600 dark:text-emerald-400"/></div>
+              <div>
+                <h2>How old are you</h2>
+                <p>This helps us calculate your needs</p>
+              </div>
+            </div>
+          </div>
+        )}
+
       </div>
     </div>
     </>
