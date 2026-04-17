@@ -64,8 +64,12 @@ const Login = () => {
             <label className="font-medium text-sm text-gray-700 dark:text-gray-300">Password</label>
             <div className="relative mt-2">
               <LockIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 size-4.5"/>
-              <input onChange={(e)=>setEmail(e.target.value)} value={email} 
-              type="email" placeholder="Enter your email" className="login-input" required/>
+              <input 
+              onChange={(e)=>setPassword(e.target.value)} 
+              value={password} 
+              placeholder="Enter your password" 
+              className="login-input pr-10" required
+              type={showPassword ? 'text' : 'password'}/>
             </div>
           </div>
 
