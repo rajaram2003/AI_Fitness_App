@@ -7,7 +7,7 @@
 }
 
 body {
-  @apply dark:bg-slate-950;
+  @apply dark:bg-slate-950 dark:text-white;
 }
 
 /* Shared Page Styles */
