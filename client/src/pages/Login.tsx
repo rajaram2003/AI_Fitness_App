@@ -74,8 +74,14 @@ const Login = () => {
               onClick={()=> setShowPassword((p)=> !p)}>
                 {showPassword ? <EyeOffIcon size={16}/> : <EyeIcon size={16}/>}
               </button>
-            </div>
+            </div>            
           </div>
+
+          <button type="submit" disabled={isSubmitting} 
+          className="login-button cursor-pointer">
+            {isSubmitting ? "Signing in..." : state === "login" ? 'Login' : 'Sign up'}
+
+          </button>
 
       </form>
     </main>
