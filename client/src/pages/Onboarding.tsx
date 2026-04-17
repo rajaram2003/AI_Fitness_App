@@ -1,10 +1,25 @@
 import { PersonStanding } from "lucide-react"
 import { useState } from "react"
 import { Toaster } from "react-hot-toast"
+import { useAppContext } from "../context/AppContext"
+import type { ProfileFormData } from "../types"
+
 
 const Onboarding = () => {
 
   const [step, setStep] = useState(1)
+  const {user, setOnboardingCompleted, fetchUser} = useAppContext()
+  const [formData, setFormData] = useState<ProfileFormData>({
+    age: 0,
+    weight: 0,
+    height: 0,
+    goal: 'maintain',
+    dailyCalorieIntake: 2000,
+    dailyCalorieBurn: 400
+  })
+
+  const totalSteps = 3;
+
   return (
     <>
     <Toaster/>
@@ -27,9 +42,10 @@ const Onboarding = () => {
       <div className="px-6 mb-8 onboarding-wrapper">
         <div className="flex gap-2 max-w-2xl">
           {[1,2,3].map((s)=>(
-            <div key={s} className={`h-1.5 flex-1 rounded-full transition-all duration-300 ${s <= step}`}/>
+            <div key={s} className={`h-1.5 flex-1 rounded-full transition-all duration-300 ${s <= step ? "bg-emerald-500" : "bg-slate-200 dark:bg-slate-800"}`}/>
           ))}
         </div>
+        <p>Step {step} of {totalSteps}</p>
       </div>
     </div>
     </>
