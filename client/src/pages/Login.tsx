@@ -5,7 +5,7 @@ import { useAppContext } from "../context/AppContext"
 
 const Login = () => {
 
-  const [state, setState] = useState('sign up')
+  const [state, setState] = useState('login')
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -85,11 +85,11 @@ const Login = () => {
 
           {state === 'login'
           ? (
-            <p>Don't have an account? <button>Sign up</button></p>
+            <p className="text-center py-6 text-sm text-gray-500 dark:text-gray-400">Don't have an account? <button onClick={()=> setState('sign-up')} className="cursor-pointer ml-1 text-green-600 hover:underline">Sign up</button></p>
               )
             :
             (
-              <p>Already Have an account? <button>Login</button></p>
+              <p className="text-center py-6 text-sm text-gray-500 dark:text-gray-400">Already Have an account? <button onClick={()=> setState('login')} className="cursor-pointer ml-1 text-green-600 hover:underline">Login</button></p>
             )}
 
       </form>
