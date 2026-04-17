@@ -1,4 +1,4 @@
-import { AtSignIcon, LockIcon, MailIcon } from "lucide-react"
+import { AtSignIcon, EyeIcon, EyeOffIcon, LockIcon, MailIcon } from "lucide-react"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useAppContext } from "../context/AppContext"
@@ -70,6 +70,9 @@ const Login = () => {
               placeholder="Enter your password" 
               className="login-input pr-10" required
               type={showPassword ? 'text' : 'password'}/>
+              <button type="button" className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+                {showPassword ? <EyeOffIcon size={16}/> : <EyeIcon size={16}/>}
+              </button>
             </div>
           </div>
 
