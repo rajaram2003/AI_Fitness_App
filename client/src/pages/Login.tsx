@@ -85,11 +85,11 @@ const Login = () => {
 
           {state === 'login'
           ? (
-            <p>Don't have an account</p>
+            <p>Don't have an account? <button>Sign up</button></p>
               )
             :
             (
-              <p></p>
+              <p>Already Have an account? <button>Login</button></p>
             )}
 
       </form>
