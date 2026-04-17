@@ -1,7 +1,11 @@
 
 const Onboarding = () => {
   return (
-    <div>Onboarding</div>
+    <>
+    <div>
+
+    </div>
+    </>
   )
 }
 
