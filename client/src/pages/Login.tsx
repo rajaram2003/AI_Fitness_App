@@ -83,6 +83,15 @@ const Login = () => {
 
           </button>
 
+          {state === 'login'
+          ? (
+            <p>Don't have an account</p>
+              )
+            :
+            (
+              <p></p>
+            )}
+
       </form>
     </main>
     
