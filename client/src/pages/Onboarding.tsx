@@ -1,10 +1,11 @@
-import { ArrowLeft, PersonStanding, ScaleIcon, Target, User } from "lucide-react"
+import { ArrowLeft, ArrowRight, PersonStanding, ScaleIcon, Target, User } from "lucide-react"
 import { useState } from "react"
-import { Toaster } from "react-hot-toast"
+import toast, { Toaster } from "react-hot-toast"
 import { useAppContext } from "../context/AppContext"
-import type { ProfileFormData } from "../types"
+import type { ProfileFormData, UserData } from "../types"
 import Input from "../components/ui/Input"
 import Button from "../components/ui/Button"
+import mockApi from "../assets/mockApi"
 
 
 const Onboarding = () => {
@@ -24,6 +25,30 @@ const Onboarding = () => {
 
   const updateField = (field: keyof ProfileFormData, value: string | number)=>{
     setFormData({...formData, [field]: value})
+  }
+
+  const handleNext = async ()=>{
+    if(step === 1){
+      if(!formData.age || Number(formData.age) < 13 || Number(formData.age) > 120){
+        return toast("Age is required")
+      }
+    }
+    if(step < totalSteps){
+      setStep(step + 1);
+    }else{
+      const userData = {
+        ...formData,
+        age : formData.age,
+        weight: formData.weight,
+        height: formData.height ? formData.height : null,
+        createAt: new Date().toISOString()
+      };
+      localStorage.setItem('fitnessUser', JSON.stringify(userData))
+      await mockApi.user.update(user?.id || "", userData as unknown as Partial<UserData>)
+      toast.success('Profile updated Successfully')
+      setOnboardingCompleted(true)
+      fetchUser(user?.token || "")
+    }
   }
 
   return (
@@ -113,8 +138,8 @@ const Onboarding = () => {
 
       {/* Navigation Buttons */}
 
-      <div>
-        <div>
+      <div className="p-6 pb-10 onboarding-wrapper">
+        <div className="flex gap-3 lg:justify-end">
           {step > 1 && (
             <Button variant="secondary" onClick={()=> setStep(step > 1 ? step - 1 : 1)} className="max-lg:flex-1 lg:px-10">
               <span className="flex items-center justify-center gap-2">
@@ -123,10 +148,11 @@ const Onboarding = () => {
               </span>
             </Button>
           )}
-            <Button variant="secondary" onClick={()=> setStep(step > 1 ? step - 1 : 1)} className="max-lg:flex-1 lg:px-10">
+            <Button onClick={handleNext} className="max-lg:flex-1 lg:px-10">
               <span className="flex items-center justify-center gap-2">
-                <ArrowLeft className="w-5 h-5"/>
-                Back
+                {step === totalSteps ? 'Get Started' : 'Continue'}
+                <ArrowRight className="w-5 h-5"/>
+                
               </span>
             </Button>
 
