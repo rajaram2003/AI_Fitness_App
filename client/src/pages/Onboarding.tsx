@@ -1,8 +1,9 @@
-import { PersonStanding, User } from "lucide-react"
+import { PersonStanding, ScaleIcon, User } from "lucide-react"
 import { useState } from "react"
 import { Toaster } from "react-hot-toast"
 import { useAppContext } from "../context/AppContext"
 import type { ProfileFormData } from "../types"
+import Input from "../components/ui/Input"
 
 
 const Onboarding = () => {
@@ -19,6 +20,10 @@ const Onboarding = () => {
   })
 
   const totalSteps = 3;
+
+  const updateField = (field: keyof ProfileFormData, value: string | number)=>{
+    setFormData({...formData, [field]: value})
+  }
 
   return (
     <>
@@ -51,6 +56,7 @@ const Onboarding = () => {
       {/* Form Content */}
 
       <div className="flex-1 px-6 onboarding-wrapper">
+
         {step === 1 && (
           <div className="space-y-6">
             <div className="flex items-center gap-4 mb-8">
@@ -63,8 +69,28 @@ const Onboarding = () => {
                 <p className="text-slate-500 dark:text-slate-400 text-sm">This helps us calculate your needs</p>
               </div>
             </div>
+            <Input label="Age" type="number" className="max-w-2xl" value={formData.age} onChange={(v)=>updateField('age', v)} placeholder="Enter your Age" min={13} max={120} required/>
           </div>
         )}
+
+         {step === 2 && (
+          <div className="space-y-6 onboarding-wrapper">
+            <div className="flex items-center gap-4 mb-8">
+
+              <div className="size-12 rounded-xl bg-emerald-50 dark:bg-emerald-900/10 border border-emerald-100 dark:border-emerald-800 flex items-center justify-center">
+              <ScaleIcon className="size-6 text-emerald-600 dark:text-emerald-400"/></div>
+
+              <div>
+                <h2 className="text-lg font-semibold text-slate-800 dark:text-white">Your measurements</h2>
+                <p className="text-slate-500 dark:text-slate-400 text-sm">Help us track your progress</p>
+              </div>
+            </div>
+            <div className="flex flex-col gap-4 max-w-2xl">
+              <Input label="Age" type="number" className="max-w-2xl" value={formData.age} onChange={(v)=>updateField('age', v)} placeholder="Enter your Age" min={13} max={120} required/>
+            </div>
+          </div>
+        )}
+
 
       </div>
     </div>
