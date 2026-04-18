@@ -1,9 +1,10 @@
-import { PersonStanding, ScaleIcon, User } from "lucide-react"
+import { ArrowLeft, PersonStanding, ScaleIcon, Target, User } from "lucide-react"
 import { useState } from "react"
 import { Toaster } from "react-hot-toast"
 import { useAppContext } from "../context/AppContext"
 import type { ProfileFormData } from "../types"
 import Input from "../components/ui/Input"
+import Button from "../components/ui/Button"
 
 
 const Onboarding = () => {
@@ -86,12 +87,50 @@ const Onboarding = () => {
               </div>
             </div>
             <div className="flex flex-col gap-4 max-w-2xl">
-              <Input label="Age" type="number" className="max-w-2xl" value={formData.age} onChange={(v)=>updateField('age', v)} placeholder="Enter your Age" min={13} max={120} required/>
+              <Input label="Weight (Kg)" type="number" value={formData.weight} onChange={(v)=>updateField('weight', v)} placeholder="Enter your Weight" min={20} max={300} required/>
+
+              <Input label="Height (Cm) - Optional" type="number" value={formData.height} onChange={(v)=>updateField('height', v)} placeholder="Enter your Height" min={100} max={250} />
             </div>
           </div>
         )}
 
+         {step === 3 && (
+          <div className="space-y-6 onboarding-wrapper">
+            <div className="flex items-center gap-4 mb-8">
 
+              <div className="size-12 rounded-xl bg-emerald-50 dark:bg-emerald-900/10 border border-emerald-100 dark:border-emerald-800 flex items-center justify-center">
+              <Target className="size-6 text-emerald-600 dark:text-emerald-400"/></div>
+
+              <div>
+                <h2 className="text-lg font-semibold text-slate-800 dark:text-white">What's your goal?</h2>
+                <p className="text-slate-500 dark:text-slate-400 text-sm">We'll tailor your experience</p>
+              </div>
+            </div>
+
+          </div>
+        )}
+      </div>
+
+      {/* Navigation Buttons */}
+
+      <div>
+        <div>
+          {step > 1 && (
+            <Button variant="secondary" onClick={()=> setStep(step > 1 ? step - 1 : 1)} className="max-lg:flex-1 lg:px-10">
+              <span className="flex items-center justify-center gap-2">
+                <ArrowLeft className="w-5 h-5"/>
+                Back
+              </span>
+            </Button>
+          )}
+            <Button variant="secondary" onClick={()=> setStep(step > 1 ? step - 1 : 1)} className="max-lg:flex-1 lg:px-10">
+              <span className="flex items-center justify-center gap-2">
+                <ArrowLeft className="w-5 h-5"/>
+                Back
+              </span>
+            </Button>
+
+        </div>
       </div>
     </div>
     </>
